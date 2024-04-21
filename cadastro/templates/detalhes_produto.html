@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #00000088;
+            font-family: Arial, sans-serif; 
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .product-image {
+            flex: 0 0 50%;
+            margin-right: 20px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #ffd700;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ produto.nome }}</h1>
+    <div class="container">
+        <div class="product-image">
+            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+        </div>
+        <div class="product-info">
+            <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+            <p><strong>Preço:</strong> {{ produto.preco }}</p>
+            <form action="{% url 'cpu_gamer' produto.pk %}" method="get">
+                <button type="submit">Comprar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

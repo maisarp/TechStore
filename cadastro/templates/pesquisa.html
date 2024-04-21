@@ -1,0 +1,22 @@
+<form method="GET" action="{% url 'pesquisar' %}">
+    <input type="text" name="q" placeholder="Pesquisar produtos...">
+    <button type="submit" class="botao-pesquisar">Pesquisar</button>
+</form>
+
+
+
+
+{% if resultados %}
+    <!-- Mostrar resultados da pesquisa -->
+    <h2>Resultados da Pesquisa para "{{ query }}"</h2>
+    <ul>
+        {% for produto in resultados %}
+            <li><a href="{% url 'detalhes_produto' produto.pk %}">{{ produto.nome }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <!-- Mostrar mensagem de nenhum resultado encontrado apenas se houver uma pesquisa -->
+    {% if query %}
+        <p>Nenhum resultado encontrado para "{{ query }}".</p>
+    {% endif %}
+{% endif %}
